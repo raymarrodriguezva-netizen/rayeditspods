@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ray Edits Pods — Podcast Production for Female Founders & Coaches</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f5d7d7;
+    --hot-pink: #f05692;
+    --lime: #dade55;
+    --near-black: #181816;
+    --off-white: #f1f1f1;
+    --white: #ffffff;
+    --pink-light: #fce8f0;
+    --pink-mid: #f8c8dc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--near-black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid rgba(24,24,22,0.08);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700; font-size: 20px;
+    letter-spacing: 0.04em;
+    color: var(--near-black);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--hot-pink); }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500;
+    color: var(--near-black);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--hot-pink); }
+  .nav-cta {
+    background: var(--hot-pink);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta:hover { background: #d4457e !important; transform: scale(1.02); }
+
+  /* ── PAGES ── */
+  .page { display: none; padding-top: 68px; }
+  .page.active { display: block; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--lime);
+    padding: 14px 5%;
+    display: flex; justify-content: center; gap: 60px;
+    flex-wrap: wrap;
+  }
+  .stats-bar span {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--near-black);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--blush);
+    padding: 100px 5% 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: 88vh;
+  }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--hot-pink);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700; font-size: clamp(42px, 5.5vw, 72px);
+    line-height: 1.0; letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--hot-pink);
+  }
+  .hero-sub {
+    font-size: 18px; line-height: 1.6;
+    color: rgba(24,24,22,0.72);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-sub strong { color: var(--near-black); font-weight: 600; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--hot-pink);
+    color: var(--white);
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-weight: 700; font-size: 14px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer; border: none;
+  }
+  .btn-primary:hover { background: #d4457e; transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--near-black);
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-weight: 600; font-size: 14px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--near-black);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover { background: var(--near-black); color: var(--white); }
+  .btn-lime {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--near-black);
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-weight: 700; font-size: 14px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer; border: none;
+  }
+  .btn-lime:hover { background: #c9cc40; transform: translateY(-2px); }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .hero-image-box {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 4/5;
+    background: var(--pink-mid);
+    border-radius: 24px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(240,86,146,0.2);
+  }
+  .hero-placeholder-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--hot-pink);
+    opacity: 0.5;
+    text-align: center;
+    padding: 20px;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: 28px; right: -12px;
+    background: var(--lime);
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--near-black);
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  .hero-badge-top {
+    position: absolute;
+    top: 28px; left: -12px;
+    background: var(--hot-pink);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(240,86,146,0.3);
+  }
+
+  /* ── WHO IT'S FOR ── */
+  .section { padding: 100px 5%; }
+  .section-alt { background: var(--white); }
+  .section-dark { background: var(--near-black); }
+  .section-pink { background: var(--blush); }
+  .section-lime { background: var(--lime); }
+
+  .eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--hot-pink);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .eyebrow-dark {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 16px;
+    display: block;
+  }
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700; font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.05; letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 20px;
+  }
+  h2.light { color: var(--white); }
+  .section-intro {
+    font-size: 17px; line-height: 1.65;
+    color: rgba(24,24,22,0.68);
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
+  .section-intro.light { color: rgba(255,255,255,0.65); }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .pain-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(240,86,146,0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pain-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(240,86,146,0.12); }
+  .pain-card .emoji { font-size: 28px; margin-bottom: 16px; display: block; }
+  .pain-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--near-black);
+    margin-bottom: 10px;
+  }
+  .pain-card p { font-size: 15px; line-height: 1.6; color: rgba(24,24,22,0.65); }
+  .pain-card .fix {
+    margin-top: 16px;
+    font-size: 13px; font-weight: 600;
+    color: var(--hot-pink);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PROCESS ── */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .process-step {
+    background: var(--white);
+    padding: 40px 28px;
+    position: relative;
+  }
+  .process-step:first-child { border-radius: 20px 0 0 20px; }
+  .process-step:last-child { border-radius: 0 20px 20px 0; }
+  .step-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 64px; font-weight: 700;
+    color: var(--blush);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .process-step h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--near-black);
+    margin-bottom: 10px;
+  }
+  .process-step p { font-size: 14px; line-height: 1.6; color: rgba(24,24,22,0.6); }
+  .process-tag {
+    display: inline-block;
+    background: var(--blush);
+    color: var(--hot-pink);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  /* ── PACKAGES PREVIEW ── */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .package-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 36px 28px;
+    border: 1.5px solid rgba(24,24,22,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .package-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+  .package-card.featured {
+    background: var(--near-black);
+    border-color: var(--hot-pink);
+    border-width: 2px;
+  }
+  .package-card.featured h3 { color: var(--white); }
+  .package-card.featured .pkg-tagline { color: rgba(255,255,255,0.55); }
+  .package-card.featured .pkg-price { color: var(--white); }
+  .package-card.featured .pkg-period { color: rgba(255,255,255,0.5); }
+  .package-card.featured li { color: rgba(255,255,255,0.75); }
+  .package-card.featured li::before { color: var(--hot-pink) !important; }
+  .pkg-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--hot-pink); color: var(--white);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px;
+  }
+  .pkg-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--hot-pink);
+    margin-bottom: 10px;
+  }
+  .package-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--near-black);
+    margin-bottom: 6px;
+  }
+  .pkg-tagline { font-size: 13px; color: rgba(24,24,22,0.5); margin-bottom: 24px; }
+  .pkg-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 42px; font-weight: 700;
+    color: var(--near-black);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pkg-period { font-size: 13px; color: rgba(24,24,22,0.45); margin-bottom: 28px; }
+  .pkg-divider { border: none; border-top: 1px solid rgba(24,24,22,0.08); margin-bottom: 24px; }
+  .package-card ul { list-style: none; flex: 1; margin-bottom: 32px; }
+  .package-card li {
+    font-size: 14px; line-height: 1.5;
+    color: rgba(24,24,22,0.72);
+    padding: 5px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .package-card li::before {
+    content: '✓';
+    font-weight: 700; font-size: 13px;
+    color: var(--hot-pink);
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .pkg-cta {
+    display: block; text-align: center;
+    padding: 14px; border-radius: 100px;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer; border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .pkg-cta-primary { background: var(--hot-pink); color: var(--white); }
+  .pkg-cta-primary:hover { background: #d4457e; }
+  .pkg-cta-outline { background: transparent; border: 2px solid rgba(24,24,22,0.2); color: var(--near-black); }
+  .pkg-cta-outline:hover { border-color: var(--near-black); background: var(--near-black); color: var(--white); }
+  .pkg-cta-dark { background: var(--hot-pink); color: var(--white); }
+  .pkg-cta-dark:hover { background: #d4457e; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(24,24,22,0.06);
+  }
+  .stars { color: var(--hot-pink); font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+  .testimonial-card blockquote {
+    font-size: 15px; line-height: 1.7;
+    color: rgba(24,24,22,0.72);
+    font-style: italic;
+    margin-bottom: 20px;
+    border: none; padding: 0;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .author-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--blush);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--hot-pink);
+    flex-shrink: 0;
+  }
+  .author-name { font-weight: 700; font-size: 14px; color: var(--near-black); }
+  .author-handle { font-size: 12px; color: rgba(24,24,22,0.45); }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background: var(--hot-pink);
+    padding: 100px 5%;
+    text-align: center;
+  }
+  .final-cta h2 {
+    color: var(--white);
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 20px;
+  }
+  .final-cta p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 540px; margin: 0 auto 40px; line-height: 1.6; }
+
+  /* ── ABOUT PAGE ── */
+  .about-hero {
+    background: var(--blush);
+    padding: 80px 5% 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-photo {
+    background: var(--pink-mid);
+    border-radius: 24px;
+    aspect-ratio: 3/4;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--hot-pink); opacity: 0.5;
+    position: relative;
+    overflow: hidden;
+  }
+  .floating-tag {
+    position: absolute;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 12px; font-weight: 600;
+    color: var(--near-black);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    font-style: italic;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0;
+    opacity: 1;
+    text-transform: none;
+  }
+  .about-content { padding-right: 20px; }
+  .about-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(36px, 4.5vw, 60px);
+    text-transform: uppercase;
+    line-height: 1.0;
+    color: var(--near-black);
+    margin-bottom: 24px;
+  }
+  .about-content h1 em { font-style: normal; color: var(--hot-pink); }
+  .about-body { font-size: 17px; line-height: 1.7; color: rgba(24,24,22,0.7); }
+  .about-body p { margin-bottom: 20px; }
+  .about-body strong { color: var(--near-black); font-weight: 600; }
+  .creds-row {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    margin-top: 36px; margin-bottom: 40px;
+  }
+  .cred {
+    display: flex; flex-direction: column;
+  }
+  .cred-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--hot-pink); line-height: 1;
+  }
+  .cred-label { font-size: 13px; color: rgba(24,24,22,0.55); margin-top: 4px; }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .value-card {
+    background: var(--near-black);
+    border-radius: 20px; padding: 36px 28px;
+  }
+  .value-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--lime);
+    margin-bottom: 12px;
+  }
+  .value-card p { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.6); }
+
+  .agency-table { width: 100%; border-collapse: collapse; }
+  .agency-table th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 14px 20px; text-align: left;
+    border-bottom: 2px solid rgba(24,24,22,0.1);
+  }
+  .agency-table th:last-child { color: var(--hot-pink); }
+  .agency-table td {
+    padding: 14px 20px; font-size: 14px;
+    border-bottom: 1px solid rgba(24,24,22,0.06);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .agency-table td:first-child { font-weight: 600; color: rgba(24,24,22,0.6); }
+  .agency-table td:nth-child(2) { color: rgba(24,24,22,0.5); }
+  .agency-table td:last-child { color: var(--near-black); font-weight: 500; }
+  .agency-check { color: var(--hot-pink); font-weight: 700; margin-right: 6px; }
+  .table-wrap {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(24,24,22,0.06);
+  }
+
+  /* ── PRICING PAGE ── */
+  .pricing-hero {
+    background: var(--near-black);
+    padding: 80px 5% 70px;
+    text-align: center;
+  }
+  .pricing-hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(40px, 6vw, 76px);
+    font-weight: 700; text-transform: uppercase;
+    color: var(--white); line-height: 1.0;
+    margin-bottom: 20px;
+  }
+  .pricing-hero h1 em { font-style: normal; color: var(--hot-pink); }
+  .pricing-hero p { font-size: 18px; color: rgba(255,255,255,0.6); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+
+  .pricing-full-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    padding: 80px 5%;
+    background: var(--off-white);
+  }
+  .pricing-card {
+    background: var(--white);
+    border-radius: 28px;
+    padding: 44px 36px;
+    border: 1.5px solid rgba(24,24,22,0.07);
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.09); }
+  .pricing-card.featured { background: var(--near-black); border-color: var(--hot-pink); border-width: 2px; }
+  .pricing-card.featured .pricing-card-label { color: var(--lime); }
+  .pricing-card.featured h3 { color: var(--white); }
+  .pricing-card.featured .pkg-tagline { color: rgba(255,255,255,0.45); }
+  .pricing-card.featured .pkg-price { color: var(--white); }
+  .pricing-card.featured .pkg-period { color: rgba(255,255,255,0.4); }
+  .pricing-card.featured .pricing-feature { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.08); }
+  .pricing-card.featured .pricing-feature::before { color: var(--lime) !important; }
+  .pricing-card.featured .pkg-divider { border-color: rgba(255,255,255,0.1); }
+  .pricing-card.featured .section-tag { background: rgba(218,222,85,0.12); color: var(--lime); }
+  .pricing-card-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--hot-pink); margin-bottom: 10px;
+  }
+  .pricing-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--near-black); margin-bottom: 6px;
+  }
+  .pricing-features { list-style: none; flex: 1; margin-bottom: 36px; }
+  .pricing-feature {
+    font-size: 14px; line-height: 1.5;
+    color: rgba(24,24,22,0.68);
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(24,24,22,0.05);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .pricing-feature::before {
+    content: '✓';
+    font-weight: 700; font-size: 12px;
+    color: var(--hot-pink);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .section-tag {
+    display: inline-block;
+    background: var(--blush);
+    color: var(--hot-pink);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin: 20px 0 12px;
+  }
+  .growth-layer {
+    background: var(--lime);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0 28px;
+  }
+  .growth-layer h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--near-black); margin-bottom: 8px;
+  }
+  .growth-layer p { font-size: 13px; line-height: 1.6; color: rgba(24,24,22,0.72); }
+  .addons-section {
+    padding: 80px 5%;
+    background: var(--white);
+  }
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .addon-pill {
+    background: var(--blush);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .addon-pill span {
+    font-weight: 600; font-size: 14px;
+    color: var(--near-black);
+    display: block; margin-bottom: 4px;
+  }
+  .addon-pill small { font-size: 12px; color: rgba(24,24,22,0.5); }
+
+  /* ── PORTFOLIO PAGE ── */
+  .portfolio-hero {
+    background: var(--blush);
+    padding: 80px 5%;
+    text-align: center;
+  }
+  .portfolio-hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(40px, 6vw, 76px);
+    font-weight: 700; text-transform: uppercase;
+    color: var(--near-black); line-height: 1.0; margin-bottom: 20px;
+  }
+  .portfolio-hero h1 em { font-style: normal; color: var(--hot-pink); }
+  .portfolio-hero p { font-size: 18px; color: rgba(24,24,22,0.6); max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+  .portfolio-section { padding: 80px 5%; }
+  .portfolio-section h2 { font-size: clamp(28px, 3.5vw, 44px); margin-bottom: 12px; }
+  .portfolio-section .sub { font-size: 16px; color: rgba(24,24,22,0.55); margin-bottom: 48px; }
+  .thumbnails-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .thumbnail-item {
+    aspect-ratio: 16/9;
+    background: var(--near-black);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .thumbnail-item:hover { transform: scale(1.02); }
+  .thumb-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--hot-pink) 0%, var(--near-black) 100%);
+    opacity: 0.85;
+  }
+  .thumb-text {
+    position: relative; z-index: 1;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--white); text-align: center;
+    padding: 16px;
+    line-height: 1.3;
+  }
+  .show-wall-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .show-cover {
+    aspect-ratio: 1/1;
+    border-radius: 16px;
+    background: var(--near-black);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    transition: transform 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+  .show-cover:hover { transform: scale(1.04); }
+  .show-cover-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--white); text-align: center; padding: 12px;
+    line-height: 1.3;
+  }
+  .reels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .reel-item {
+    aspect-ratio: 9/16;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .reel-item:hover { transform: scale(1.03); }
+  .reel-bg {
+    position: absolute; inset: 0;
+    background: var(--near-black);
+  }
+  .reel-text {
+    position: relative; z-index: 1;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--white); text-align: center;
+    padding: 16px; line-height: 1.4;
+  }
+  .play-icon {
+    position: absolute; z-index: 2;
+    bottom: 16px; right: 16px;
+    width: 36px; height: 36px;
+    background: var(--hot-pink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--near-black);
+    padding: 60px 5% 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-brand .logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700; font-size: 22px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    text-decoration: none;
+    display: block; margin-bottom: 14px;
+  }
+  .footer-brand .logo span { color: var(--hot-pink); }
+  .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+  .footer-col h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .footer-col a:hover { color: var(--hot-pink); }
+  .footer-bottom {
+    background: var(--near-black);
+    padding: 20px 5%;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-bottom a { color: var(--hot-pink); text-decoration: none; }
+
+  /* ── UTILS ── */
+  .text-center { text-align: center; }
+  .text-center .section-intro { margin-left: auto; margin-right: auto; }
+  .mt-60 { margin-top: 60px; }
+  .tag-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+  .filter-tag {
+    background: var(--white);
+    border: 1.5px solid rgba(24,24,22,0.12);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+    color: var(--near-black);
+  }
+  .filter-tag.active, .filter-tag:hover {
+    background: var(--hot-pink); color: var(--white); border-color: var(--hot-pink);
+  }
+
+  /* Colors for show covers */
+  .sc-1 { background: #2D1B69; }
+  .sc-2 { background: #1A1A1A; }
+  .sc-3 { background: #4A0E6B; }
+  .sc-4 { background: #F5F5F0; }
+  .sc-4 .show-cover-inner { color: #333; }
+  .sc-5 { background: #0D3B5E; }
+  .sc-6 { background: #6B2D2D; }
+  .sc-7 { background: #1B3A1B; }
+  .sc-8 { background: #3D1A5C; }
+  .sc-9 { background: #8B1A1A; }
+  .sc-10 { background: #1A2B4A; }
+  .sc-11 { background: #4A2800; }
+  .sc-12 { background: #0A3D2B; }
+
+  /* Reel colors */
+  .rc-1 { background: linear-gradient(160deg, #f05692, #181816); }
+  .rc-2 { background: linear-gradient(160deg, #3D1A5C, #181816); }
+  .rc-3 { background: linear-gradient(160deg, #1A2B4A, #181816); }
+  .rc-4 { background: linear-gradient(160deg, #4A2800, #181816); }
+  .rc-5 { background: linear-gradient(160deg, #0D3B5E, #181816); }
+  .rc-6 { background: linear-gradient(160deg, #1B3A1B, #181816); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero, .about-hero { grid-template-columns: 1fr; gap: 40px; }
+    .hero-image { display: none; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .process-step:first-child { border-radius: 20px 0 0 0; }
+    .process-step:last-child { border-radius: 0 0 20px 0; }
+    footer { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .process-grid { grid-template-columns: 1fr; }
+    .process-step { border-radius: 0; }
+    .process-step:first-child { border-radius: 20px 20px 0 0; }
+    .process-step:last-child { border-radius: 0 0 20px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home')">RAY<span>EDITS</span>PODS</a>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('pricing')">Packages</a>
+    <a href="#" onclick="showPage('portfolio')">Portfolio</a>
+    <a href="#" class="nav-cta">Book a Free Call</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     PAGE 1: HOME
+═══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">🎤 Podcast Production for Female Founders & Coaches</p>
+      <h1>You Speak<br>With <em>Soul.</em><br>I Handle<br>The Rest.</h1>
+      <p class="hero-sub">You hit record. I turn it into a <strong>full content strategy</strong> — edited episodes, Reels, blog posts, newsletters, graphics, and more. Done for you. Every single week.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" onclick="showPage('pricing')">See My Packages</a>
+        <a href="#" class="btn-secondary">Book a Free Call</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-box">
+        <p class="hero-placeholder-text">Your photo here<br>— same vibe as<br>your brand photos</p>
+        <div class="hero-badge">1 Episode →<br>Blog • Reels<br>Newsletter<br>Graphics ✨</div>
+        <div class="hero-badge-top">200+ Episodes<br>Edited 🎧</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <span>🎧 7 Years Editing Videos</span>
+    <span>🎬 200+ Podcast Episodes Edited</span>
+    <span>✨ 1+ Million Views & Downloads</span>
+  </div>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section section-alt">
+    <span class="eyebrow">Who This Is For</span>
+    <h2>Sound familiar?</h2>
+    <p class="section-intro">If you're a coach, founder, or heart-led entrepreneur recording episodes that collect dust — I was literally built for you.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <span class="emoji">😮‍💨</span>
+        <h3>You're drowning in the tech</h3>
+        <p>Editing, uploading, scheduling, show notes, thumbnails — it's a full-time job on top of your full-time job.</p>
+        <p class="fix">→ I take all of it off your plate, permanently.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">📁</span>
+        <h3>Your episodes collect dust</h3>
+        <p>You hit record, publish, and... nothing. The episode just sits there instead of working for your business.</p>
+        <p class="fix">→ One episode becomes a blog, Reels, newsletter & graphics.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">🔄</span>
+        <h3>You can't stay consistent</h3>
+        <p>Life gets busy. Episodes go weeks without posting. Your audience loses momentum — and so do you.</p>
+        <p class="fix">→ I create the system that keeps you showing up, every week.</p>
+      </div>
+      <div class="pain-card">
+        <span class="emoji">😤</span>
+        <h3>Agencies made you feel like a number</h3>
+        <p>You tried the big agency. You got a different editor every month and zero real investment in your show.</p>
+        <p class="fix">→ With me, you work directly with me. Every. Single. Time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS / HOW IT WORKS -->
+  <section class="section section-pink">
+    <span class="eyebrow">The Process</span>
+    <h2>How It Works</h2>
+    <p class="section-intro">Four steps. Zero overwhelm. You stay in your zone of genius — I handle everything else.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="process-tag">Discovery Call</div>
+        <h3>We Talk. I Listen.</h3>
+        <p>30 minutes on a free call — I learn your show, your goals, your vibe. We figure out exactly which package fits where you're at right now.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="process-tag">Onboarding</div>
+        <h3>You're Set Up for Success</h3>
+        <p>You get a full welcome kit — brand assets collected, Notion dashboard set up, Slack access granted. This is where it starts feeling real.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="process-tag">You Hit Record</div>
+        <h3>Drop the File. That's It.</h3>
+        <p>You record your episode and drop the raw file in Dropbox. My workflow kicks in immediately. You don't touch the rest — I've got it.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="process-tag">Content Delivered</div>
+        <h3>Show Up Everywhere</h3>
+        <p>Edited episode, Reels, blog post, newsletter, graphics, show notes, thumbnail — all delivered on time, every single week. You just review and post.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES PREVIEW -->
+  <section class="section section-dark">
+    <span class="eyebrow-dark">The Stage Energy Suite</span>
+    <h2 class="light">A package for every stage.</h2>
+    <p class="section-intro light">Whether you're just starting or ready to hand over the whole show — there's a spot for you here.</p>
+    <div class="packages-grid">
+      <div class="package-card">
+        <p class="pkg-label">Entry</p>
+        <h3>The Warmup</h3>
+        <p class="pkg-tagline">Clean audio. Done for you. Monthly.</p>
+        <div class="pkg-price">$790</div>
+        <div class="pkg-period">/month · 2-week turnaround</div>
+        <hr class="pkg-divider">
+        <ul>
+          <li>4 audio episodes/month</li>
+          <li>Filler word & noise removal</li>
+          <li>Mixing & mastering</li>
+          <li>SEO show notes per episode</li>
+          <li>3 branded social graphics</li>
+          <li>Slack support all month</li>
+        </ul>
+        <a href="#" class="pkg-cta pkg-cta-outline" onclick="showPage('pricing')">Learn More</a>
+      </div>
+      <div class="package-card featured">
+        <div class="pkg-badge">Most Popular</div>
+        <p class="pkg-label">Full Production</p>
+        <h3>The Amplifier</h3>
+        <p class="pkg-tagline">Your content machine. Record once. Show up everywhere.</p>
+        <div class="pkg-price">$1,900</div>
+        <div class="pkg-period">/month · 2-week turnaround</div>
+        <hr class="pkg-divider" style="border-color:rgba(255,255,255,0.1)">
+        <ul>
+          <li>4 audio + video episodes/month</li>
+          <li>3 high-impact Reels per episode</li>
+          <li>YouTube thumbnail per episode</li>
+          <li>Blog post + newsletter per episode</li>
+          <li>SEO show notes, titles & descriptions</li>
+          <li>YouTube + Podcast platform management</li>
+          <li>Monthly analytics report</li>
+        </ul>
+        <a href="#" class="pkg-cta pkg-cta-dark" onclick="showPage('pricing')">Learn More</a>
+      </div>
+      <div class="package-card">
+        <p class="pkg-label">Premium · Growth Engine</p>
+        <h3>The Takeover</h3>
+        <p class="pkg-tagline">Full management. I run your entire show.</p>
+        <div class="pkg-price">$3,500</div>
+        <div class="pkg-period">/month · Priority turnaround</div>
+        <hr class="pkg-divider">
+        <ul>
+          <li>Up to 8 episodes/month</li>
+          <li>Everything in The Amplifier</li>
+          <li>Monthly strategy call (60 min)</li>
+          <li>Monthly episode topic planning</li>
+          <li>★ The Growth Layer: guest booking OR podcast pitching</li>
+        </ul>
+        <a href="#" class="pkg-cta pkg-cta-outline" onclick="showPage('pricing')">Learn More</a>
+      </div>
+    </div>
+    <div class="text-center mt-60">
+      <a href="#" class="btn-lime" onclick="showPage('pricing')">See All 5 Packages →</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-alt">
+    <span class="eyebrow">Real Words From Real Clients</span>
+    <h2>What my clients say</h2>
+    <p class="section-intro">Don't take my word for it — here's what happens when you hand the mic over to me.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Love Ray, she has been my ride or die video editor. Her commitment to delivering, the details, the options she gave me has been amazing. She helped me with my YouTube and made it fun for me again."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">SA</div>
+          <div>
+            <div class="author-name">Soph Allen</div>
+            <div class="author-handle">Content Creator & Coach</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Ray has understood my vision and gave me 100% more of what I expected. It was so easy to reach her — she understood my lack of knowledge on video editing, yet she NAILED IT."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">SS</div>
+          <div>
+            <div class="author-name">Shannon Shipman</div>
+            <div class="author-handle">Coach & Entrepreneur</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Raymar is clutch on tight deadlines. We've tossed her late files and last-minute changes, and she still delivers polished episodes. Every single time."</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">DM</div>
+          <div>
+            <div class="author-name">Danny Morel</div>
+            <div class="author-handle">Podcast Host</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>Your podcast era<br>starts now.</h2>
+    <p>Book a free 30-minute discovery call and let's figure out exactly which package gets your show where it needs to be.</p>
+    <a href="#" class="btn-lime">Book My Free Call 👇</a>
+  </section>
+
+</div><!-- end home -->
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 2: ABOUT
+═══════════════════════════════════════ -->
+<div id="page-about" class="page">
+
+  <section class="about-hero">
+    <div class="about-photo">
+      Your brand photo here ✨
+      <div class="floating-tag" style="top:24px; right:24px;">☕ fueled by coffee</div>
+      <div class="floating-tag" style="bottom:80px; left:24px;">100% Libra ♎</div>
+      <div class="floating-tag" style="top:60px; left: -10px; transform: rotate(-3deg);">Marketing dropout 💻</div>
+    </div>
+    <div class="about-content">
+      <span class="eyebrow">Hi, I'm Raymar</span>
+      <h1>The Podcast<br>Partner You<br><em>Actually</em><br>Deserved.</h1>
+      <div class="creds-row">
+        <div class="cred"><span class="cred-num">7</span><span class="cred-label">Years of Experience</span></div>
+        <div class="cred"><span class="cred-num">200+</span><span class="cred-label">Episodes Edited</span></div>
+        <div class="cred"><span class="cred-num">1M+</span><span class="cred-label">Views & Downloads</span></div>
+      </div>
+      <div class="about-body">
+        <p>I spent 7 years inside agencies — editing podcasts, producing video content, building shows for coaches, founders, and entrepreneurs who had big missions and bigger messages.</p>
+        <p>But agency life came at a cost. <strong>Too many clients. Not enough care. Burnout.</strong> I watched powerful women hand their show to a revolving door of junior editors who didn't know their voice, didn't care about their growth, and treated their podcast like a ticket number in a queue.</p>
+        <p>So I left. I went independent — because <strong>every client I take on deserves the editor that agencies promised them but never delivered.</strong></p>
+      </div>
+      <a href="#" class="btn-primary">Book a Free Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- WHAT I ACTUALLY BELIEVE -->
+  <section class="section section-alt">
+    <span class="eyebrow">The Way I Work</span>
+    <h2>What sets me apart</h2>
+    <p class="section-intro">This isn't just editing. It's a full partnership — and I take that seriously every single time.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <h3>You work with me. Not an intern.</h3>
+        <p>Every single edit is done by me, Raymar Rodriguez. Not a subcontractor. Not a junior editor. Me — the person you talked to on the discovery call, every time.</p>
+      </div>
+      <div class="value-card">
+        <h3>Your show is a business asset.</h3>
+        <p>I don't just edit episodes — I think about your podcast like a marketing engine. Every piece of content I create is designed to grow your audience and bring in clients.</p>
+      </div>
+      <div class="value-card">
+        <h3>Consistency is the whole game.</h3>
+        <p>The podcasters who win are the ones who show up every week. My job is to make sure you never have an excuse not to. Systems, workflows, delivery — all handled.</p>
+      </div>
+      <div class="value-card">
+        <h3>Communication is non-negotiable.</h3>
+        <p>You get direct Slack access. No account managers, no middleman, no wondering where your files are. Real communication means real results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VS AGENCIES -->
+  <section class="section">
+    <span class="eyebrow">The Real Difference</span>
+    <h2>Me vs. The agencies</h2>
+    <p class="section-intro">Agencies promise white-glove service and deliver a queue. Here's exactly what changes when you work with me directly.</p>
+    <div class="table-wrap">
+      <table class="agency-table">
+        <thead>
+          <tr>
+            <th>What You Care About</th>
+            <th>Agency Experience</th>
+            <th>Ray Edits Pods ✓</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Who edits your show</td><td>Junior editor — rotates constantly</td><td><span class="agency-check">✓</span>Raymar, every single time</td></tr>
+          <tr><td>Communication</td><td>Through account managers</td><td><span class="agency-check">✓</span>Direct Slack access with me</td></tr>
+          <tr><td>Knows your show</td><td>New person = start over every month</td><td><span class="agency-check">✓</span>7 years of experience + your show, inside out</td></tr>
+          <tr><td>Pricing</td><td>$2,000–$5,000+ with agency overhead</td><td><span class="agency-check">✓</span>$790–$3,500 — transparent, always</td></tr>
+          <tr><td>Content repurposing</td><td>Rarely included at these prices</td><td><span class="agency-check">✓</span>Blog, newsletter, Reels — built in</td></tr>
+          <tr><td>Audience growth</td><td>Not offered</td><td><span class="agency-check">✓</span>Built into The Takeover (The Growth Layer)</td></tr>
+          <tr><td>How you feel</td><td>Like a client number in a queue</td><td><span class="agency-check">✓</span>Like a priority. Because you are.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>7 years. 200+ episodes.<br>Let's make yours next.</h2>
+    <p>Book a free 30-minute discovery call — no pitch, no pressure. Just a real conversation about your show.</p>
+    <a href="#" class="btn-lime">Book My Free Call 👇</a>
+  </section>
+
+</div><!-- end about -->
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 3: PRICING
+═══════════════════════════════════════ -->
+<div id="page-pricing" class="page">
+
+  <section class="pricing-hero">
+    <span class="eyebrow-dark">The Stage Energy Suite</span>
+    <h1>A Package for<br>Every <em>Stage.</em></h1>
+    <p>From your first episode to a fully managed show — here's exactly what you get, every single month.</p>
+  </section>
+
+  <div class="pricing-full-grid">
+
+    <!-- WARMUP -->
+    <div class="pricing-card">
+      <p class="pricing-card-label">Entry · Audio Only</p>
+      <h3>The Warmup</h3>
+      <p class="pkg-tagline">Clean audio. Done for you. Every month.</p>
+      <div class="pkg-price">$790</div>
+      <p class="pkg-period">/month · 2-week turnaround</p>
+      <hr class="pkg-divider">
+      <ul class="pricing-features">
+        <li class="pricing-feature">4 audio episodes/month (up to 60 min each)</li>
+        <li class="pricing-feature">Filler word & noise removal</li>
+        <li class="pricing-feature">Mixing & mastering</li>
+        <li class="pricing-feature">Custom intro/outro music</li>
+        <li class="pricing-feature">SEO-optimized show notes per episode</li>
+        <li class="pricing-feature">3 branded social graphics per episode</li>
+        <li class="pricing-feature">Slack support throughout the month</li>
+      </ul>
+      <a href="#" class="pkg-cta pkg-cta-outline">Book a Discovery Call</a>
+    </div>
+
+    <!-- AMPLIFIER -->
+    <div class="pricing-card featured">
+      <div class="pkg-badge">Most Popular</div>
+      <p class="pricing-card-label">Full Production · Content Machine</p>
+      <h3>The Amplifier</h3>
+      <p class="pkg-tagline">Record once. Show up everywhere.</p>
+      <div class="pkg-price">$1,900</div>
+      <p class="pkg-period">/month · 2-week turnaround</p>
+      <hr class="pkg-divider" style="border-color:rgba(255,255,255,0.1)">
+      <ul class="pricing-features">
+        <li class="pricing-feature">4 audio + video episodes/month</li>
+        <li class="pricing-feature">Full color correction + video editing</li>
+        <li class="pricing-feature">Filler word removal + audio cleanup</li>
+        <li class="pricing-feature">3 high-impact Reels per episode</li>
+        <li class="pricing-feature">YouTube thumbnail per episode</li>
+        <li class="pricing-feature">SEO show notes + titles + descriptions</li>
+        <li class="pricing-feature">3 branded social graphics per episode</li>
+        <li class="pricing-feature">Blog post written per episode</li>
+        <li class="pricing-feature">Newsletter written per episode</li>
+        <li class="pricing-feature">YouTube + Podcast platform management</li>
+        <li class="pricing-feature">Monthly analytics report</li>
+        <li class="pricing-feature">Slack support</li>
+      </ul>
+      <a href="#" class="pkg-cta pkg-cta-dark">Book a Discovery Call</a>
+    </div>
+
+    <!-- TAKEOVER -->
+    <div class="pricing-card">
+      <p class="pricing-card-label">Premium · Growth Engine</p>
+      <h3>The Takeover</h3>
+      <p class="pkg-tagline">I don't just edit your show. I grow it.</p>
+      <div class="pkg-price">$3,500</div>
+      <p class="pkg-period">/month · Priority turnaround · 3-month minimum</p>
+      <hr class="pkg-divider">
+      <ul class="pricing-features">
+        <li class="pricing-feature">Up to 8 episodes/month (2/week)</li>
+        <li class="pricing-feature">Everything in The Amplifier</li>
+        <li class="pricing-feature">1 IG carousel script per episode</li>
+        <li class="pricing-feature">Monthly episode topic planning</li>
+        <li class="pricing-feature">Monthly 60-min strategy call</li>
+        <li class="pricing-feature">Priority turnaround — always jump the queue</li>
+      </ul>
+      <div class="growth-layer">
+        <h4>★ The Growth Layer</h4>
+        <p>2–3 guest bookings OR podcast pitches per month — built in. Agencies charge $1,500–$3,000/month for this alone. Here, it's part of your package.</p>
+      </div>
+      <a href="#" class="pkg-cta pkg-cta-outline">Book a Discovery Call</a>
+    </div>
+
+  </div>
+
+  <!-- ONE-TIME PACKAGES -->
+  <section class="section section-alt">
+    <span class="eyebrow">One-Time Packages</span>
+    <h2>Not ready for monthly? I've got you.</h2>
+    <p class="section-intro">Launch packages and limited series options — full production, no ongoing commitment required.</p>
+    <div class="packages-grid">
+      <div class="package-card">
+        <p class="pkg-label">Launch Package</p>
+        <h3>The Debut</h3>
+        <p class="pkg-tagline">From zero to live. The right way.</p>
+        <div class="pkg-price">$2,000+</div>
+        <div class="pkg-period">One-time · 4–6 weeks</div>
+        <hr class="pkg-divider">
+        <ul>
+          <li>Strategy + episode planning session</li>
+          <li>Notion podcast workflow setup</li>
+          <li>Custom cover art + intro/outro music</li>
+          <li>Trailer editing</li>
+          <li>First 3–5 episodes fully edited</li>
+          <li>RSS setup + distribution (Apple, Spotify, etc.)</li>
+          <li>SEO show notes + social graphics</li>
+        </ul>
+        <a href="#" class="pkg-cta pkg-cta-outline">Book a Discovery Call</a>
+      </div>
+      <div class="package-card">
+        <p class="pkg-label">Standalone Series</p>
+        <h3>The Signal Series</h3>
+        <p class="pkg-tagline">5–8 episodes. Done forever. Works while you sleep.</p>
+        <div class="pkg-price">From $1,500</div>
+        <div class="pkg-period">One-time · 6–8 weeks</div>
+        <hr class="pkg-divider">
+        <ul>
+          <li>Strategy + episode planning session</li>
+          <li>Full audio editing for all episodes</li>
+          <li>Branded cover art + intro/outro music</li>
+          <li>SEO show notes per episode</li>
+          <li>2 social media clips per episode</li>
+          <li>Distribution or private hosting setup</li>
+          <li>Analytics report after launch</li>
+        </ul>
+        <a href="#" class="pkg-cta pkg-cta-outline">Book a Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADD-ONS -->
+  <section class="addons-section">
+    <span class="eyebrow">Available on Any Package</span>
+    <h2>Add-Ons</h2>
+    <p class="section-intro">Need a little more? Stack these onto any package, any month.</p>
+    <div class="addons-grid">
+      <div class="addon-pill"><span>Extra Episodes</span><small>Beyond your package limit</small></div>
+      <div class="addon-pill"><span>Additional Reels</span><small>Beyond the 3 included</small></div>
+      <div class="addon-pill"><span>TikTok / YouTube Shorts</span><small>Repurposed from episodes</small></div>
+      <div class="addon-pill"><span>Email Sequence Writing</span><small>Welcome, nurture, or launch</small></div>
+      <div class="addon-pill"><span>Guest Management</span><small>For Warmup + Amplifier clients</small></div>
+      <div class="addon-pill"><span>Podcast Pitching</span><small>For Warmup + Amplifier clients</small></div>
+      <div class="addon-pill"><span>Extra IG Carousel Scripts</span><small>Available à la carte</small></div>
+      <div class="addon-pill"><span>Strategy Deep-Dive Call</span><small>60-min content strategy session</small></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>Not sure which package<br>is right for you?</h2>
+    <p>Book a free 30-minute discovery call — I'll listen to where you're at and tell you exactly what I recommend.</p>
+    <a href="#" class="btn-lime">Book My Free Call 👇</a>
+  </section>
+
+</div><!-- end pricing -->
+
+
+<!-- ═══════════════════════════════════════
+     PAGE 4: PORTFOLIO
+═══════════════════════════════════════ -->
+<div id="page-portfolio" class="page">
+
+  <section class="portfolio-hero">
+    <span class="eyebrow">200+ Episodes. Real Results.</span>
+    <h1>The Work<br>Speaks for <em>Itself.</em></h1>
+    <p>Thumbnails, Reels, and shows I've produced from scratch — for coaches, founders, and entrepreneurs just like you.</p>
+  </section>
+
+  <!-- SHOW WALL -->
+  <section class="portfolio-section section-alt">
+    <span class="eyebrow">The Show Wall</span>
+    <h2>Shows I've Worked On</h2>
+    <p class="sub">Every one of these shows trusted me with their voice. Every single one.</p>
+    <div class="show-wall-grid">
+      <div class="show-cover sc-1"><div class="show-cover-inner">The School of Becoming</div></div>
+      <div class="show-cover sc-2"><div class="show-cover-inner">First Smoke of the Day</div></div>
+      <div class="show-cover sc-3"><div class="show-cover-inner">Tingenuity AI</div></div>
+      <div class="show-cover sc-4"><div class="show-cover-inner">Within</div></div>
+      <div class="show-cover sc-5"><div class="show-cover-inner">The Alchemy Podcast</div></div>
+      <div class="show-cover sc-6"><div class="show-cover-inner">Embodied Relationship Experience</div></div>
+      <div class="show-cover sc-7"><div class="show-cover-inner">The Spiritual Hustler</div></div>
+      <div class="show-cover sc-8"><div class="show-cover-inner">Finding The One</div></div>
+      <div class="show-cover sc-9"><div class="show-cover-inner">Tapped In</div></div>
+      <div class="show-cover sc-10"><div class="show-cover-inner">The Higher Self</div></div>
+      <div class="show-cover sc-11"><div class="show-cover-inner">Hustle and Hues</div></div>
+      <div class="show-cover sc-12"><div class="show-cover-inner">Nations of Immigrants</div></div>
+    </div>
+  </section>
+
+  <!-- THUMBNAILS -->
+  <section class="portfolio-section">
+    <span class="eyebrow">YouTube Thumbnails ✨</span>
+    <h2>Thumbnails That Get Clicked</h2>
+    <p class="sub">Because a great episode deserves a thumbnail that actually stops the scroll.</p>
+    <div class="thumbnails-grid">
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#2D1B69,#181816);"></div><div class="thumb-text">Political Persecution<br>to New Beginnings</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#1B3A1B,#181816);"></div><div class="thumb-text">Stop Overshooting<br>Photo + Video</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#6B2D2D,#181816);"></div><div class="thumb-text">You're Pushing<br>Love Away</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#3D1A5C,#181816);"></div><div class="thumb-text">The Secret to More<br>Beauty Revenue</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#1A1A1A,#f05692);"></div><div class="thumb-text">From Unemployment<br>to Unstoppable</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#0D3B5E,#181816);"></div><div class="thumb-text">From Police Aspirations<br>to Asylum</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#4A2800,#181816);"></div><div class="thumb-text">Cashflow Tips for<br>Beauty Businesses</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#1B3A2D,#181816);"></div><div class="thumb-text">Therapist: "Why You<br>Are Exhausted!"</div></div>
+      <div class="thumbnail-item"><div class="thumb-overlay" style="background:linear-gradient(135deg,#181816,#f05692);"></div><div class="thumb-text">Healing After<br>Divorce</div></div>
+    </div>
+  </section>
+
+  <!-- REELS/SHORTS -->
+  <section class="portfolio-section section-alt">
+    <span class="eyebrow">Reels & Shorts ✨</span>
+    <h2>Short-form that actually converts</h2>
+    <p class="sub">3 Reels per episode — hooks that stop the scroll, cuts that keep them watching.</p>
+    <div class="reels-grid">
+      <div class="reel-item"><div class="reel-bg rc-1"></div><div class="reel-text">Even Before...</div><div class="play-icon">▶</div></div>
+      <div class="reel-item"><div class="reel-bg rc-2"></div><div class="reel-text">Aliens Existing</div><div class="play-icon">▶</div></div>
+      <div class="reel-item"><div class="reel-bg rc-3"></div><div class="reel-text">When The Dad's Not Around</div><div class="play-icon">▶</div></div>
+      <div class="reel-item"><div class="reel-bg rc-4"></div><div class="reel-text">People...</div><div class="play-icon">▶</div></div>
+      <div class="reel-item"><div class="reel-bg rc-5"></div><div class="reel-text">To Change</div><div class="play-icon">▶</div></div>
+      <div class="reel-item"><div class="reel-bg rc-6"></div><div class="reel-text">Said...</div><div class="play-icon">▶</div></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>Ready to add your show<br>to this wall?</h2>
+    <p>Book a free discovery call and let's talk about what your podcast could look like with me running the production side.</p>
+    <a href="#" class="btn-lime">Book My Free Call 👇</a>
+  </section>
+
+</div><!-- end portfolio -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <a href="#" class="logo" onclick="showPage('home')">RAY<span>EDITS</span>PODS</a>
+    <p>Less stress on content —<br>more energy for your mission.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Pages</h4>
+    <ul>
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li><a href="#" onclick="showPage('about')">About Me</a></li>
+      <li><a href="#" onclick="showPage('pricing')">Packages & Pricing</a></li>
+      <li><a href="#" onclick="showPage('portfolio')">Portfolio</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Let's Connect</h4>
+    <ul>
+      <li><a href="#">Book a Free Call</a></li>
+      <li><a href="#">@rayeditspods on IG</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Ray Edits Pods · Raymar Rodriguez</p>
+  <p>Built for soul-led podcasters 🎤</p>
+</div>
+
+<script>
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  return false;
+}
+</script>
+</body>
+</html>
