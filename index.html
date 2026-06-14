@@ -26,6 +26,15 @@
     color: var(--near-black);
     overflow-x: hidden;
   }
+  /* Global 20px minimum side padding on all sections */
+  section, .stats-ticker, footer, .footer-bottom,
+  .hero, .about-hero, .pricing-hero, .portfolio-hero,
+  .pricing-full-grid, .addons-section, .final-cta {
+    padding-left: max(20px, 5%) !important;
+    padding-right: max(20px, 5%) !important;
+  }
+  .hero { padding-top: 100px; padding-bottom: 80px; }
+  nav { padding-left: max(20px, 5%) !important; padding-right: max(20px, 5%) !important; }
 
   /* ── NAV ── */
   nav {
@@ -1268,7 +1277,7 @@
       </div>
       <div class="value-card">
         <h3>Communication is non-negotiable.</h3>
-        <p>You get direct Slack access. No account managers, no middleman, no wondering where your files are. Real communication means real results.</p>
+        <p>You get direct access to me across project management and messages for updates. No account managers, no middleman, no wondering where your files are. Real communication means real results.</p>
       </div>
     </div>
   </section>
@@ -1288,8 +1297,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Who edits your show</td><td>Junior editor — rotates constantly</td><td><span class="agency-check">✓</span>Raymar, every single time</td></tr>
-          <tr><td>Communication</td><td>Through account managers</td><td><span class="agency-check">✓</span>Direct Slack access with me</td></tr>
+          <tr><td>Who edits your show</td><td>Junior editor — rotates constantly</td><td><span class="agency-check">✓</span>Me, every single time</td></tr>
+          <tr><td>Communication</td><td>Through account managers</td><td><span class="agency-check">✓</span>Direct access with me</td></tr>
           <tr><td>Knows your show</td><td>New person = start over every month</td><td><span class="agency-check">✓</span>7 years of experience + your show, inside out</td></tr>
           <tr><td>Pricing</td><td>$2,000–$5,000+ with agency overhead</td><td><span class="agency-check">✓</span>$790–$3,500 — transparent, always</td></tr>
           <tr><td>Content repurposing</td><td>Rarely included at these prices</td><td><span class="agency-check">✓</span>Blog, newsletter, Reels — built in</td></tr>
